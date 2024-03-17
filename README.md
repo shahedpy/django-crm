@@ -9,6 +9,10 @@ This is a CRM (Customer Relationship Management) application built using Django.
 - Python 3.10.12
 - Django 5.0.3
 
+## Topics Cover
+- CRUD
+- Phone Field
+
 ## Installation
 
 1. Clone the repository:
