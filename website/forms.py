@@ -61,7 +61,7 @@ class AddRecordForm(forms.ModelForm):
         required=True,
         widget=forms.widgets.TextInput(
             attrs={
-                "placeholder": "First Name",
+                "placeholder": "Full Name",
                 "class": "form-control"
             }
         ),

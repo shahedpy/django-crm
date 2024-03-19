@@ -18,11 +18,10 @@ def home(request):
 			messages.success(request, "You Have Been Logged In!")
 			return redirect('home')
 		else:
-			messages.success(request, "There Was An Error Logging In, Please Try Again...")
+			messages.success(request, "There Was An Error Logging In, Please Try Again")
 			return redirect('home')
 	else:
-		return render(request, 'home.html', {'records':records})
-
+		return render(request, 'home.html', {'records': records})
 
 
 def logout_user(request):
@@ -45,21 +44,19 @@ def register_user(request):
 			return redirect('home')
 	else:
 		form = SignUpForm()
-		return render(request, 'register.html', {'form':form})
+		return render(request, 'register.html', {'form': form})
 
-	return render(request, 'register.html', {'form':form})
-
+	return render(request, 'register.html', {'form': form})
 
 
 def customer_record(request, pk):
 	if request.user.is_authenticated:
 		# Look Up Records
 		customer_record = Record.objects.get(id=pk)
-		return render(request, 'record.html', {'customer_record':customer_record})
+		return render(request, 'record.html', {'customer_record': customer_record})
 	else:
 		messages.success(request, "You Must Be Logged In To View That Page...")
 		return redirect('home')
-
 
 
 def delete_record(request, pk):
@@ -78,10 +75,10 @@ def add_record(request):
 	if request.user.is_authenticated:
 		if request.method == "POST":
 			if form.is_valid():
-				add_record = form.save()
-				messages.success(request, "Record Added...")
+				form.save()
+				messages.success(request, "Record Added")
 				return redirect('home')
-		return render(request, 'add_record.html', {'form':form})
+		return render(request, 'add_record.html', {'form': form})
 	else:
 		messages.success(request, "You Must Be Logged In...")
 		return redirect('home')
@@ -95,7 +92,7 @@ def update_record(request, pk):
 			form.save()
 			messages.success(request, "Record Has Been Updated!")
 			return redirect('home')
-		return render(request, 'update_record.html', {'form':form})
+		return render(request, 'update_record.html', {'form': form})
 	else:
 		messages.success(request, "You Must Be Logged In...")
 		return redirect('home')
